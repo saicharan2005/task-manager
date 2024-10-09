@@ -1,9 +1,20 @@
-const app = require('express')();
+const express= require('express');
+
+const app = express();
+const task=require('./routes/task.js')
+//middle ware
+
+app.use(express.json())
+
 
 // routes
 app.get('/',(req,res)=>{
-  res.status(200).send("hello")
+  res.status(200).send("hello task ")
 })
+
+
+
+app.use('/api/v1/tasks',task)
 
 
 // get all the task(get request)
