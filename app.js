@@ -1,3 +1,5 @@
+require('./data-base/connect.js')
+
 const express= require('express');
 
 const app = express();
