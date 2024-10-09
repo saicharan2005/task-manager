@@ -7,6 +7,7 @@ const task=require('./routes/task.js')
 
 //database connection
 const connectDb=require('./data-base/connect.js')
+require('dotenv').config()
 
 
 //middle ware
@@ -43,7 +44,7 @@ app.use('/api/v1/tasks',task)
 
 const start =async ()=>{
   try {
-    await connectDb()
+    await connectDb(process.env.MONGO_URI)
     app.listen(port, console.log(`server is loading on port ${port}.......`))
   } catch (error) {
     console.log(error);

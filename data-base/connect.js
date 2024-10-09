@@ -1,16 +1,11 @@
 const mongoose = require('mongoose')
 
 
-const connectionString =``
-
-//place connection string here
-
-
 
 
 const connectDb = (url)=>{
     return mongoose
-.connect( connectionString)
+.connect( url)
 .then(()=>console.log("connected sucessful")
 )
 }
