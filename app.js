@@ -1,9 +1,14 @@
-require('./data-base/connect.js')
+
 
 const express= require('express');
 
 const app = express();
 const task=require('./routes/task.js')
+
+//database connection
+const connectDb=require('./data-base/connect.js')
+
+
 //middle ware
 
 app.use(express.json())
@@ -36,10 +41,21 @@ app.use('/api/v1/tasks',task)
 
 
 
+const start =async ()=>{
+  try {
+    await connectDb()
+    app.listen(port, console.log(`server is loading on port ${port}.......`))
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+
 
 const port=5000
 // app.listen(5000,()=>{
 //   console.log("server is started .......")
 // })
 
-app.listen(port, console.log(`server is loading on port ${port}.......`))
+
+start()
